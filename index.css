@@ -3,11 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth; /* Défilement fluide quand on clique sur le menu */
+}
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6; /* espace entre les lignes de texte */
     color: #1a1a1a;
     background-color: #ffffff;
@@ -19,15 +22,15 @@ body {
     padding: 0 24px;
 }
 
-/* --- NAVIGATION STYLEE --- */
+/* --- NAVIGATION --- */
 .navbar {
     position: absolute;
-    top: 0; /*On dit à l'élément de se placer à 0 pixel du bord supérieur de son conteneur parent (généralement le body)*/
+    top: 0; /* Placer à 0 pixel du bord supérieur */
     width: 100%;
     height: 90px;
     display: flex;
     align-items: center;
-    z-index: 1000;/* Assure que la navbar reste au-dessus des autres éléments */
+    z-index: 1000; /* Reste au-dessus des autres éléments */
     color: white;
 }
 
@@ -39,32 +42,40 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 800;
-    letter-spacing: -0.5px;
+}
+
+/* --- BOUTON BURGER (Mobile uniquement) --- */
+.burger-menu {
+    display: none; /* Caché sur ordinateur */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.barre {
+    width: 30px;
+    height: 3px;
+    background-color: white;
 }
 
 .nav-links {
     display: flex;
-    list-style: none;/* Supprime les puces de la liste */
+    list-style: none; /* Supprime les puces de la liste */
     gap: 40px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 15px;
     font-weight: 500;
     opacity: 0.85;
-    transition: all 0.3s ease;
-    position: relative;/* Nécessaire pour positionner la barre d'animation sous les liens */
+    position: relative; /* Pour positionner la barre d'animation */
 }
 
-.nav-links a:hover {
-    opacity: 1;
-}
-
-/* Petite barre d'animation sous les liens au survol */
+/* Animation au survol */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -73,7 +84,7 @@ body {
     bottom: -5px;
     left: 0;
     background-color: white;
-    transition: width 0.3s ease;/* Animation de la barre qui s'étend de 0 à 100% au survol */
+    transition: width 0.3s ease; /* Animation de la barre qui s'étend */
 }
 
 .nav-links a:hover::after {
@@ -94,9 +105,11 @@ body {
     color: white;
 }
 
-.hero-content {
-    max-width: 850px;
-    padding: 0 20px;
+.hero-title {
+    font-size: 80px; 
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px; /* Espace entre le titre et le sous-titre */
 }
 
 .badge {
@@ -105,38 +118,8 @@ body {
     display: inline-block;
     padding: 8px 20px;
     border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 14px;
     margin-bottom: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.hero-title {
-    font-size: clamp(3rem, 10vw, 5rem);/* Permet au titre de s'adapter à différentes tailles d'écran */
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 20px;/* Espace entre le titre et le sous-titre */
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    margin-bottom: 40px;
-}
-
-.hero-info {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 40px;
-    font-size: 0.95rem;
-}
-
-/* --- BOUTONS --- */
-.hero-btns {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
 }
 
 .btn {
@@ -144,29 +127,12 @@ body {
     padding: 16px 32px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);/* Animation fluide pour les interactions */
+    transition: 0.3s;
 }
 
 .btn-primary {
     background-color: white;
     color: #030213;
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);/* Légère élévation au survol pour un effet de profondeur */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: white;
-    border: 1px solid rgba(255,255,255,0.4);
-}
-
-.btn-outline:hover {
-    background-color: rgba(255,255,255,0.1);
-    border-color: white;
 }
 
 /* --- SECTION ABOUT --- */
@@ -176,61 +142,11 @@ body {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;/* Deux colonnes de largeur égale pour le texte et l'image */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
     gap: 80px;
     align-items: center;
 }
 
-.small-badge {
-    color: #717182;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
-}
-
-.section-title {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 16px 0 24px;
-    line-height: 1.2;
-}
-
-.text-muted {
-    color: #717182;
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.feature-card {
-    background-color: #f8f8fa;
-    padding: 24px;
-    border-radius: 16px;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: scale(1.02);
-}
-
-.feature-icon {
-    font-size: 1.5rem;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.feature-label {
-    font-weight: 700;
-    color: #030213;
-}
-
-/* --- GALLERIE MOSAIQUE --- */
 .gallery-mosaic {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -240,31 +156,36 @@ body {
 .gallery-mosaic img {
     width: 100%;
     border-radius: 20px;
-    object-fit: cover;/* Assure que les images remplissent leur conteneur sans être déformées */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    object-fit: cover; /* Remplit sans déformer */
 }
 
-.img-tall {
-    height: 480px;
-    grid-row: span 2;
+/* --- CLASSE POUR LE JS --- */
+.apparait {
+    display: flex !important;
 }
 
-.img-square {
-    height: 230px;
-}
-
-/* --- RESPONSIVE DESIGN --- */
+/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 968px) {
-    .about-grid {
-        grid-template-columns: 1;/* Passe à une seule colonne sur les écrans plus petits */
-        gap: 60px;
+    .burger-menu {
+        display: flex; /* On montre le burger */
     }
-    
-    .hero-title {
-        font-size: 3.5rem;/* Ajuste la taille du titre pour les écrans plus petits */
-    }
-    
+
     .nav-links {
-        display: none; /* Cache le menu sur mobile pour simplifier */
+        display: none; /* Cache le menu par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background-color: #030213;
+        padding: 40px 0;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+
+    .hero-title {
+        font-size: 45px;
     }
 }
